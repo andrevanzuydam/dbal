@@ -81,6 +81,8 @@ abstract class AbstractSchemaManager
         $callback = [$this, $method];
         assert(is_callable($callback));
 
+
+
         try {
             return call_user_func_array($callback, $args);
         } catch (Throwable $e) {
@@ -457,6 +459,9 @@ abstract class AbstractSchemaManager
     public function createTable(Table $table)
     {
         $createFlags = AbstractPlatform::CREATE_INDEXES | AbstractPlatform::CREATE_FOREIGNKEYS;
+
+        $this->_platform->getCreateTableSQL($table, $createFlags);
+
         $this->_execSql($this->_platform->getCreateTableSQL($table, $createFlags));
     }
 

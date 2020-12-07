@@ -52,6 +52,8 @@ class DefaultExpressionTest extends FunctionalTestCase
         });
     }
 
+
+
     private function assertDefaultExpression(string $type, callable $expression): void
     {
         $platform   = $this->connection->getDatabasePlatform();

@@ -30,9 +30,10 @@ class BlobTest extends FunctionalTestCase
         $table->addColumn('clobcolumn', 'text');
         $table->addColumn('blobcolumn', 'blob');
         $table->setPrimaryKey(['id']);
-
         $sm = $this->connection->getSchemaManager();
+
         $sm->dropAndCreateTable($table);
+
     }
 
     public function testInsert(): void
@@ -46,6 +47,8 @@ class BlobTest extends FunctionalTestCase
             ParameterType::STRING,
             ParameterType::LARGE_OBJECT,
         ]);
+
+
 
         self::assertEquals(1, $ret);
     }

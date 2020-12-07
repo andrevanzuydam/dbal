@@ -55,7 +55,7 @@ class ExceptionTest extends FunctionalTestCase
         $table->addColumn('id', 'integer', []);
         $table->setPrimaryKey(['id']);
 
-        $this->connection->getSchemaManager()->createTable($table);
+        $this->connection->getSchemaManager()->dropAndCreateTable($table);
 
         $this->connection->insert('duplicatekey_table', ['id' => 1]);
 
@@ -295,7 +295,7 @@ class ExceptionTest extends FunctionalTestCase
         $table->addColumn('id', 'integer', []);
         $table->setPrimaryKey(['id']);
 
-        $this->connection->getSchemaManager()->createTable($table);
+        $this->connection->getSchemaManager()->dropAndCreateTable($table);
 
         $sql = 'SELECT id FRO syntax_error_table';
         $this->expectException(Exception\SyntaxErrorException::class);
@@ -417,8 +417,8 @@ class ExceptionTest extends FunctionalTestCase
         $owningTable->setPrimaryKey(['id']);
         $owningTable->addForeignKeyConstraint($table, ['constraint_id'], ['id']);
 
-        $schemaManager->createTable($table);
-        $schemaManager->createTable($owningTable);
+        $schemaManager->dropAndCreateTable($table);
+        $schemaManager->dropAndCreateTable($owningTable);
     }
 
     private function tearDownForeignKeyConstraintViolationExceptionTest(): void

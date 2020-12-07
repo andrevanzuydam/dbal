@@ -8,6 +8,7 @@ use Doctrine\DBAL\Driver\Mysqli;
 use Doctrine\DBAL\Driver\OCI8;
 use Doctrine\DBAL\Driver\PDO;
 use Doctrine\DBAL\Driver\SQLSrv;
+use Doctrine\DBAL\Driver\Interbase;
 
 use function array_keys;
 use function array_merge;
@@ -45,6 +46,8 @@ final class DriverManager
         'pdo_sqlsrv'         => PDO\SQLSrv\Driver::class,
         'mysqli'             => Mysqli\Driver::class,
         'sqlsrv'             => SQLSrv\Driver::class,
+        'interbase'           => Interbase\Driver::class,
+        'firebird'           => Interbase\Driver::class,
     ];
 
     /**
@@ -62,6 +65,8 @@ final class DriverManager
         'pgsql'      => 'pdo_pgsql',
         'sqlite'     => 'pdo_sqlite',
         'sqlite3'    => 'pdo_sqlite',
+        'firebird'   => 'interbase',
+        'interbase'   => 'interbase',
     ];
 
     /**

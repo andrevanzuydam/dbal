@@ -100,7 +100,7 @@ class TestUtil
 
             $testConn->close();
 
-            $privConn->getSchemaManager()->dropAndCreateDatabase($dbname);
+           // $privConn->getSchemaManager()->dropAndCreateDatabase($dbname);
 
             $privConn->close();
         } else {

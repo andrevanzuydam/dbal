@@ -40,7 +40,7 @@ class DataAccessTest extends FunctionalTestCase
         $table->setPrimaryKey(['test_int']);
 
         $sm = $this->connection->getSchemaManager();
-        $sm->createTable($table);
+        $sm->dropAndCreateTable($table);
 
         $this->connection->insert('fetch_table', [
             'test_int' => 1,
